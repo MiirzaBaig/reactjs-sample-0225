@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Plus, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -132,8 +131,8 @@ const TaskBoard = () => {
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gradient mb-2">Task Board</h1>
-            <p className="text-gray-400">Manage your tasks efficiently</p>
+            <h1 className="text-3xl font-bold text-gradient mb-2">Donezo</h1>
+            <p className="text-gray-400"><em>Ride the wave of productivity!</em></p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -157,41 +156,44 @@ const TaskBoard = () => {
         </div>
 
         {/* Task Board */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {columns.map(column => (
-            <div
-              key={column.id}
-              className={`bg-[#111111] rounded-lg p-4 border-t-2 ${column.color} min-h-[600px]`}
-              onDragOver={handleDragOver}
-              onDrop={(e) => handleDrop(e, column.id as Task['status'])}
-            >
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold text-white">{column.title}</h2>
-                <span className="bg-[#1a1a1a] text-gray-400 text-xs px-2 py-1 rounded-full">
-                  {getTasksByStatus(column.id as Task['status']).length}
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                {getTasksByStatus(column.id as Task['status']).map(task => (
-                  <TaskCard
-                    key={task.id}
-                    task={task}
-                    onEdit={openEditModal}
-                    onDelete={handleDeleteTask}
-                    onStatusChange={handleStatusChange}
-                    isDragging={draggedTaskId === task.id}
-                  />
-                ))}
-              </div>
-
-              {getTasksByStatus(column.id as Task['status']).length === 0 && (
-                <div className="text-center text-gray-500 mt-8">
-                  <p>No tasks in {column.title.toLowerCase()}</p>
+        <div className="overflow-x-auto pb-2">
+          <div className="flex flex-col gap-6 lg:grid lg:grid-cols-3">
+            {columns.map(column => (
+              <div
+                key={column.id}
+                className={`bg-[#111111] rounded-lg p-3 sm:p-4 border-t-2 ${column.color} min-w-[90vw] max-w-full lg:min-w-0 lg:max-w-none min-h-[500px]`}
+                onDragOver={handleDragOver}
+                onDrop={(e) => handleDrop(e, column.id as Task['status'])}
+              >
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <h2 className="font-semibold text-base sm:text-lg text-white">{column.title}</h2>
+                  <span className="bg-[#1a1a1a] text-gray-400 text-xs px-2 py-1 rounded-full">
+                    {getTasksByStatus(column.id as Task['status']).length}
+                  </span>
                 </div>
-              )}
-            </div>
-          ))}
+
+                <div className="space-y-2 sm:space-y-3">
+                  {getTasksByStatus(column.id as Task['status']).map(task => (
+                    <TaskCard
+                      key={task.id}
+                      task={task}
+                      onEdit={openEditModal}
+                      onDelete={handleDeleteTask}
+                      onStatusChange={handleStatusChange}
+                      isDragging={draggedTaskId === task.id}
+                      compact={true}
+                    />
+                  ))}
+                </div>
+
+                {getTasksByStatus(column.id as Task['status']).length === 0 && (
+                  <div className="text-center text-gray-500 mt-8">
+                    <p>No tasks in {column.title.toLowerCase()}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Task Modal */}

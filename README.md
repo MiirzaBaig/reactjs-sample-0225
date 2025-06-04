@@ -1,73 +1,70 @@
-# Welcome to your Lovable project
+# Donezo
 
-## Project info
+**Ride the wave of productivity.**
 
-**URL**: https://lovable.dev/projects/70afec78-a8f5-4c0c-b27f-b5c85b3f10ef
+Donezo is a modern, dark-themed task board app that helps you organize, track, and complete your tasks with style. Built for speed, clarity, and a beautiful user experience—on both web and mobile.
 
-## How can I edit this code?
+## ✨ Features
+- 📝 Create, edit, and delete tasks
+- 🏷️ Organize tasks by status (To Do, In Progress, Done)
+- 🔍 Fast search and filtering
+- 📱 Fully responsive (mobile & desktop)
+- 🌓 Gorgeous dark UI
+- 🏄 Drag & drop task movement
+- 🔒 Local storage for persistence
+- 🔑 Firebase authentication (MetaMask & Phantom wallet connect)
 
-There are several ways of editing your application.
+## 🚀 Tech Stack
+- [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Firebase](https://firebase.google.com/) (Auth, Analytics)
+- [shadcn/ui](https://ui.shadcn.com/) components
 
-**Use Lovable**
+## 🛠️ Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/70afec78-a8f5-4c0c-b27f-b5c85b3f10ef) and start prompting.
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/your-username/donezo.git
+   cd donezo
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+3. **Set up environment variables:**
+   - Copy the example below into a `.env` file in the project root:
+     ```env
+     VITE_FIREBASE_API_KEY=your_api_key
+     VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+     VITE_FIREBASE_PROJECT_ID=your_project_id
+     VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+     VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+     VITE_FIREBASE_APP_ID=your_app_id
+     VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+     ```
+   - Get these values from your [Firebase Console](https://console.firebase.google.com/).
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. **Start the app:**
+   ```bash
 npm run dev
+   # or
+   yarn dev
+   ```
+   The app will be running at [http://localhost:5173](http://localhost:5173)
+
+## 📦 Build for Production
+```bash
+npm run build
+# or
+yarn build
 ```
 
-**Edit a file directly in GitHub**
+## 📝 License
+MIT
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/70afec78-a8f5-4c0c-b27f-b5c85b3f10ef) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+> **Donezo** — Ride the wave of productivity.

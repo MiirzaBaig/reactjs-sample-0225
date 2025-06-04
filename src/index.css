@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -57,4 +56,17 @@
   .button-glow {
     @apply transition-all duration-200 ease-out hover:shadow-md hover:shadow-primary/30;
   }
+
+  .profile-glow {
+    box-shadow: 0 0 24px 0 rgba(59,130,246,0.25), 0 4px 32px 0 rgba(59,130,246,0.15);
+    transition: box-shadow 0.3s;
+  }
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade {
+  animation: fade 0.5s;
 }

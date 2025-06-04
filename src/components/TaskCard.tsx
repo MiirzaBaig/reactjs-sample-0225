@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Edit, Trash2, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -20,6 +19,7 @@ interface TaskCardProps {
   onDelete: (taskId: string) => void;
   onStatusChange: (taskId: string, newStatus: Task['status']) => void;
   isDragging?: boolean;
+  compact?: boolean;
 }
 
 const TaskCard: React.FC<TaskCardProps> = ({
@@ -27,6 +27,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
   onEdit,
   onDelete,
   isDragging = false,
+  compact = false,
 }) => {
   const priorityColors = {
     low: 'bg-gray-500',
@@ -49,6 +50,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
       className={`
         bg-[#111111] border-[#1a1a1a] card-hover cursor-pointer group
         ${isDragging ? 'opacity-50 rotate-2 scale-105' : ''}
+        ${compact ? 'p-2 sm:p-4' : 'p-4'}
       `}
       draggable
       onDragStart={(e) => {
@@ -56,16 +58,16 @@ const TaskCard: React.FC<TaskCardProps> = ({
         e.dataTransfer.effectAllowed = 'move';
       }}
     >
-      <CardContent className="p-4">
+      <CardContent className={`${compact ? 'p-2 sm:p-4' : 'p-4'}`}>
         {/* Priority indicator */}
-        <div className="flex items-start justify-between mb-3">
+        <div className={`flex items-start justify-between mb-2 ${compact ? 'mb-1' : 'mb-3'}`}>
           <div className={`w-3 h-3 rounded-full ${priorityColors[task.priority]} shrink-0`} />
-          <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className={`flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200`}>
             <Button
               variant="ghost"
               size="sm"
               onClick={handleEdit}
-              className="h-8 w-8 p-0 hover:bg-[#1a1a1a] text-gray-400 hover:text-white"
+              className={`h-8 w-8 p-0 hover:bg-[#1a1a1a] text-gray-400 hover:text-white ${compact ? 'text-xs' : ''}`}
             >
               <Edit className="w-3 h-3" />
             </Button>
@@ -73,7 +75,7 @@ const TaskCard: React.FC<TaskCardProps> = ({
               variant="ghost"
               size="sm"
               onClick={handleDelete}
-              className="h-8 w-8 p-0 hover:bg-red-500/20 text-gray-400 hover:text-red-400"
+              className={`h-8 w-8 p-0 hover:bg-red-500/20 text-gray-400 hover:text-red-400 ${compact ? 'text-xs' : ''}`}
             >
               <Trash2 className="w-3 h-3" />
             </Button>
@@ -81,19 +83,17 @@ const TaskCard: React.FC<TaskCardProps> = ({
         </div>
 
         {/* Task content */}
-        <h3 className="font-semibold text-white mb-2 line-clamp-2">
+        <h3 className={`font-semibold text-white mb-1 ${compact ? 'text-base' : 'text-lg'} line-clamp-2`}>
           {task.title}
         </h3>
-        
         {task.description && (
-          <p className="text-sm text-gray-400 mb-3 line-clamp-3">
+          <p className={`text-sm text-gray-400 mb-2 line-clamp-3 ${compact ? 'text-xs' : ''}`}>
             {task.description}
           </p>
         )}
-
         {/* Due date */}
         {task.dueDate && (
-          <div className="flex items-center gap-1 text-xs text-gray-500">
+          <div className={`flex items-center gap-1 text-xs text-gray-500`}>
             <Calendar className="w-3 h-3" />
             {new Date(task.dueDate).toLocaleDateString()}
           </div>
